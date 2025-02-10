@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{%  block content %}
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row row-pb-lg product-detail-wrap">
+            <div class="col-sm-8">
+                <div class="owl-carousel">
+                    <div class="item">
+                        <div class="product-entry border">
+                            <a class="prod-img" href="#">
+                                <img alt="Free html5 bootstrap 4 template" class="img-fluid" src="{{detail.image.url}}">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="product-entry border">
+                            <a class="prod-img" href="#">
+                                <img alt="Free html5 bootstrap 4 template" class="img-fluid" src="images/item-2.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="product-entry border">
+                            <a class="prod-img" href="#">
+                                <img alt="Free html5 bootstrap 4 template" class="img-fluid" src="images/item-3.jpg">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="item">
+                        <div class="product-entry border">
+                            <a class="prod-img" href="#">
+                                <img alt="Free html5 bootstrap 4 template" class="img-fluid" src="images/item-4.jpg">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="product-desc">
+                    <h3>{{detail.name}}</h3>
+                    <p class="price">
+                        <span>${{detail.price}}</span>
+                        <span class="rate">
+									<i class="icon-star-full"></i>
+									<i class="icon-star-full"></i>
+									<i class="icon-star-full"></i>
+									<i class="icon-star-full"></i>
+									<i class="icon-star-half"></i>
+									(74 Rating)
+								</span>
+                    </p>
+                    <p>{{detail.desc}}</p>
+                    {% if user.is_superuser %}
+                    {% if detail.stock > 0 %}
+                    <div class="size-wrap">
+                        <div class="block-26 mb-4">
+                            <h4>Available Stock</h4>
+                            <ul>
+                                <li><a href="#">{{ detail.stock }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-group mb-4">
+            <span class="input-group-btn">
+                <button class="quantity-left-minus btn" data-field="" data-type="minus" type="button">
+                    <i class="icon-minus2"></i>
+                </button>
+            </span>
+                        <input class="form-control input-number" id="quantity" max="100" min="1" name="quantity"
+                               type="text" value="1">
+                        <span class="input-group-btn ml-1">
+                <button class="quantity-right-plus btn" data-field="" data-type="plus" type="button">
+                    <i class="icon-plus2"></i>
+                </button>
+            </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p class="addtocart"><a class="btn btn-primary btn-addtocart" href="{% url 'shop:addstock' detail.id %}"><i
+                                    class="icon-shopping-cart"></i> Add stock</a></p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="size-wrap">
+                        <div class="block-26 mb-4">
+                            <h4>Out of Stock</h4>
+                            <ul>
+                                <li><a href="#">{{ detail.stock }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-group mb-4">
+            <span class="input-group-btn">
+                <button class="quantity-left-minus btn" data-field="" data-type="minus" type="button">
+                    <i class="icon-minus2"></i>
+                </button>
+            </span>
+                        <input class="form-control input-number" id="quantity" max="100" min="1" name="quantity"
+                               type="text" value="1">
+                        <span class="input-group-btn ml-1">
+                <button class="quantity-right-plus btn" data-field="" data-type="plus" type="button">
+                    <i class="icon-plus2"></i>
+                </button>
+            </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p class="addtocart"><a class="btn btn-primary btn-addtocart" href="{% url 'shop:addstock' detail.id %}"><i
+                                    class="icon-shopping-cart"></i> Add stock</a></p>
+                        </div>
+                    </div>
+                    {% endif %}
+                    {% else %}
+                    {% if detail.stock > 0 %}
+                    <div class="size-wrap">
+                        <div class="block-26 mb-4">
+                            <h4>Available Stock</h4>
+                            <ul>
+                                <li><a href="#">{{ detail.stock }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-group mb-4">
+            <span class="input-group-btn">
+                <button class="quantity-left-minus btn" data-field="" data-type="minus" type="button">
+                    <i class="icon-minus2"></i>
+                </button>
+            </span>
+                        <input class="form-control input-number" id="quantity" max="100" min="1" name="quantity"
+                               type="text" value="1">
+                        <span class="input-group-btn ml-1">
+                <button class="quantity-right-plus btn" data-field="" data-type="plus" type="button">
+                    <i class="icon-plus2"></i>
+                </button>
+            </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p class="addtocart"><a class="btn btn-primary btn-addtocart"
+                                                    href="{% url 'cart:addtocart' detail.id %}"><i
+                                    class="icon-shopping-cart"></i> Add to cart</a></p>
+                        </div>
+                    </div>
+                    {% else %}
+                    <div class="size-wrap">
+                        <div class="block-26 mb-4">
+                            <h4>Out of Stock</h4>
+                            <ul>
+                                <li><a href="#">{{ detail.stock }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="input-group mb-4">
+            <span class="input-group-btn">
+                <button class="quantity-left-minus btn" data-field="" data-type="minus" type="button">
+                    <i class="icon-minus2"></i>
+                </button>
+            </span>
+                        <input class="form-control input-number" id="quantity" max="100" min="1" name="quantity"
+                               type="text" value="1">
+                        <span class="input-group-btn ml-1">
+                <button class="quantity-right-plus btn" data-field="" data-type="plus" type="button">
+                    <i class="icon-plus2"></i>
+                </button>
+            </span>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 text-center">
+                            <p class="addtocart"><a class="btn btn-primary btn-addtocart"
+                                                    href=""><i
+                                    class="icon-shopping-cart"></i> Out of stock</a></p>
+                        </div>
+                    </div>
+
+                    {% endif %}
+                    {% endif %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

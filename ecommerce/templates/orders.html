@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center"> your Orders</h1>
+<div class="container">
+    <div class="container-fluid">
+        <h3 class="text-center">
+            shopping cart
+        </h3>
+
+    </div>
+
+    <div class="row row-pb-lg">
+        <div class="col-md-12">
+            <div class="product-name d-flex">
+                <div class="one-forth text-left px-4">
+                    <span>Product Details</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Price</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Quantity</span>
+                </div>
+                <div class="one-eight text-center">
+                    <span>Order_id</span>
+                </div>
+                <div class="one-eight text-center px-4">
+                    <span>Ordered_on</span>
+                </div>
+                <div class="one-eight text-center px-4">
+                    <span>Delivery_status</span>
+                </div>
+            </div>
+
+            {% for i in orders %}
+            <div class="product-cart d-flex">
+                <div class="one-forth">
+                    <div class="product-img" style="background-image: url({{i.product.image.url}});">
+                    </div>
+                    <div class="display-tc">
+                        <h3>{{i.product.name}}</h3>
+                    </div>
+                </div>
+                <div class="one-eight text-center">
+                    <div class="display-tc">
+                        <span class="price">{{i.product.price}}</span>
+                    </div>
+                </div>
+                <div class="one-eight text-center">
+                    <div class="display-tc">
+                        <span class="price">{{i.no_of_items}}</span>
+                    </div>
+                </div>
+                <div class="one-eight text-center">
+                    <div class="display-tc">
+                        <span class="price">{{i.order_id}}</span>
+                    </div>
+                </div>
+                 <div class="one-eight text-center">
+                    <div class="display-tc">
+                        <span class="price">{{i.ordered_date}}</span>
+                    </div>
+                </div>
+                 <div class="one-eight text-center">
+                    <div class="display-tc">
+                        <span class="price">{{i.delivery_status}}</span>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

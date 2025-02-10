@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container-fluid">
+    <h3 class="text-center">
+        shopping cart
+    </h3>
+
+</div>
+
+<div class="row row-pb-lg">
+    <div class="col-md-12">
+        <div class="product-name d-flex">
+            <div class="one-forth text-left px-4">
+                <span>Product Details</span>
+            </div>
+            <div class="one-eight text-center">
+                <span>Price</span>
+            </div>
+            <div class="one-eight text-center">
+                <span>Quantity</span>
+            </div>
+            <div class="one-eight text-center">
+                <span>Total</span>
+            </div>
+            <div class="one-eight text-center px-4">
+                <span>Remove</span>
+            </div>
+        </div>
+
+        {% for i in cart %}
+        <div class="product-cart d-flex">
+            <div class="one-forth">
+                <div class="product-img" style="background-image: url({{i.product.image.url}});">
+                </div>
+                <div class="display-tc">
+                    <h3>{{i.product.name}}</h3>
+                </div>
+            </div>
+            <div class="one-eight text-center">
+                <div class="display-tc">
+                    <span class="price">{{i.product.price}}</span>
+                </div>
+            </div>
+            <div class="one-eight text-center d-flex align-items-center justify-content-center">
+                <a href="{% url 'cart:cartdecrement' i.product.id %}"><i class="fa-solid fa-minus"></i></a>
+
+                <input class="form-control input-number text-center" id="quantity" max="100" min="1"
+                       name="quantity" type="text" value="{{i.quantity}}">
+
+                <a href="{% url 'cart:addtocart' i.product.id %}"><i class="fa-solid fa-plus"></i></a>
+            </div>
+            <div class="one-eight text-center">
+                <div class="display-tc">
+                    <span class="price">{{i.subtotal}}</span>
+                </div>
+            </div>
+            <div class="one-eight text-center">
+                <div class="display-tc">
+                    <a class="closed" href="{% url 'cart:cartdelete' i.product.id %}"></a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+        <div class="row row-pb-lg">
+            <div class="col-md-12">
+                <div class="total-wrap">
+                    <div class="row">
+                        <div class="col-sm-8">
+                            <form action="#">
+                                <div class="row form-group">
+
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <div class="total">
+                                <div class="sub">
+                                    <p><span>Subtotal:</span> <span>${{t}}</span></p>
+                                    <p><span>Discount:</span> <span>$0.00</span></p>
+                                </div>
+                                <div class="grand-total">
+                                    <p><span><strong>Total:</strong></span> <span>${{t}}</span></p>
+                                </div>
+                            </div>
+                             <div class="col-sm-3 mt-3">
+                                        <a class="btn btn-primary" href="{% url 'cart:orderform' %}"> Check Out</a>
+                                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="text-center">Add Stock</h1>
+<div class="container">
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            <!--        {{form.as_table}}-->
+            {{form|crispy}}
+        </table>
+        <button class="btn btn-primary" type="submit">submit</button>
+    </form>
+</div>
+{% endblock %}

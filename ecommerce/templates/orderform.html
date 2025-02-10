@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+<h1 class="text-center">Check Out</h1>
+<div class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Address</label>
+            <textarea class="form-control" name="a" rows="3"></textarea>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Phone</label>
+            <input class="form-control" name="p" type="number">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">pin</label>
+            <input class="form-control" name="pin" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">submit</button>
+    </form>
+</div>
+{% endblock %}

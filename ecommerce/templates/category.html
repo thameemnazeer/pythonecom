@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block carosal %}
+<!- carosal -!>
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url('{% static 'images/img_bg_1.jpg' %}');">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                            <div class="slider-text-inner">
+                                <div class="desc">
+                                    <h1 class="head-1">Men's</h1>
+                                    <h2 class="head-2">Shoes</h2>
+                                    <h2 class="head-3">Collection</h2>
+                                    <p class="category"><span>New trending shoes</span></p>
+                                    <p><a class="btn btn-primary" href="#">Shop Collection</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="background-image: url('{% static 'images/img_bg_2.jpg' %}');">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                            <div class="slider-text-inner">
+                                <div class="desc">
+                                    <h1 class="head-1">Huge</h1>
+                                    <h2 class="head-2">Sale</h2>
+                                    <h2 class="head-3"><strong class="font-weight-bold">50%</strong> Off</h2>
+                                    <p class="category"><span>Big sale sandals</span></p>
+                                    <p><a class="btn btn-primary" href="#">Shop Collection</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li style="background-image: url('{% static 'images/img_bg_3.jpg' %}');">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                            <div class="slider-text-inner">
+                                <div class="desc">
+                                    <h1 class="head-1">New</h1>
+                                    <h2 class="head-2">Arrival</h2>
+                                    <h2 class="head-3">up to <strong class="font-weight-bold">30%</strong> off</h2>
+                                    <p class="category"><span>New stylish shoes for men</span></p>
+                                    <p><a class="btn btn-primary" href="#">Shop Collection</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+{% endblock %}
+{%  block content %}
+
+<!--<div class="colorlib-about">-->
+<!--    <div class="container">-->
+<!--        <div class="row row-pb-lg">-->
+<!--            <div class="col-sm-6 mb-3">-->
+<!--                <div class="video colorlib-video" style="background-image:  url('{% static 'images/about.jpg' %}');">-->
+<!--                    <a class="popup-vimeo" href="https://vimeo.com/channels/staffpicks/93951774"><i-->
+<!--                            class="icon-play3"></i></a>-->
+<!--                    <div class="overlay"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-sm-6">-->
+<!--                <div class="about-wrap">-->
+<!--                    <h2>Footwear the leading eCommerce Store around the Globe</h2>-->
+<!--                    <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question-->
+<!--                        Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven-->
+<!--                        versalia, put her initial into the belt and made herself on the way.</p>-->
+<!--                    <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline-->
+<!--                        of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own-->
+<!--                        road, the Line Lane. Pityful a rethoric question ran over her cheek, then she continued her-->
+<!--                        way.</p>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="colorlib-intro">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2 class="intro">It started with a simple idea: Create quality, well-designed products that I wanted
+                    myself.</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="colorlib-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+                <h2>Best category</h2>
+            </div>
+        </div>
+
+        <div class="row row-pb-md">
+            {% for i in category %}
+            <div class="col-lg-3 mb-4 text-center">
+
+                <div class="product-entry border">
+                    <a class="prod-img" href="#">
+                        <img alt="Free html5 bootstrap 4 template" class="img-fluid"
+                             src="{{i.image.url}}">
+                    </a>
+                    <div class="desc">
+                        <h2><a href="#">{{i.name}}</a></h2>
+                        <p><a class="btn btn-primary" href="{% url 'shop:categorydetail' i.id %} ">Shop Now</a></p>
+                    </div>
+                </div>
+
+            </div>
+            {% endfor %}
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p><a class="btn btn-primary btn-lg" href="#">Shop All Products</a></p>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+{% endblock %}

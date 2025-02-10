@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+{% extends 'base.html' %}
+{% load static %}
+{% block carosal %}
+<!- carosal -!>
+<aside id="colorlib-hero">
+    <div class="flexslider">
+        <ul class="slides">
+            <li style="background-image: url({{detail.image.url}});">
+                <div class="overlay"></div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-sm-6 offset-sm-3 text-center slider-text">
+                            <div class="slider-text-inner">
+                                <div class="desc">
+                                    <h1 class="head-1">{{detail.name}}</h1>
+                                    <h2 class="head-2">Latest {{detail.name}}</h2>
+                                    <h2 class="head-3">Collection</h2>
+                                    <p class="category"><span>New trending {{detail.name}}</span></p>
+                                    <p><a class="btn btn-primary" href="#">Shop Collection</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</aside>
+{% endblock %}
+{%  block content %}
+<div class="colorlib-about">
+    <div class="container">
+        <div class="row row-pb-lg">
+            <div class="col-sm-6 mb-3">
+                <div class="video colorlib-video" style="background-image: url({{detail.image.url}});">
+                    <a class="popup-vimeo" href="https://www.youtube.com/" ><i
+                            class="icon-play3"></i></a>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="about-wrap">
+                    <h2>{{detail.name}}</h2>
+                    <p>{{detail.desc}}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="colorlib-product">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-8 offset-sm-2 text-center colorlib-heading">
+						<h2>Best {{detail.name}}</h2>
+					</div>
+				</div>
+				<div class="row row-pb-md">
+                    {% for i in detail.product.all %}
+					<div class="col-lg-3 mb-4 text-center">
+						<div class="product-entry border">
+								<img src="{{i.image.url}}" height="200px" width="100%"  alt="Free html5 bootstrap 4 template">
+							<div class="desc">
+								<h2><a href="{% url 'shop:productdetail' i.id %}">{{i.name}}</a></h2>
+								<span class="price">${{i.price}}</span>
+							</div>
+						</div>
+					</div>
+                    {% endfor %}
+				</div>
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><a href="" class="btn btn-primary btn-lg">Shop All Products</a></p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+
+
+{% endblock %}
